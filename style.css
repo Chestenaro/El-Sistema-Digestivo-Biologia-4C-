@@ -80,7 +80,9 @@ header h1 span{color:var(--gold)}
 /* ORGANS */
 .organ{
   padding:4rem 2.5rem;border-bottom:1px solid var(--warm);
-  display:grid;grid-template-columns:1fr 300px;gap:3rem;align-items:center;
+  display:grid;
+  grid-template-columns:1fr 300px; /* Grilla fija corregida por ancho del contenedor */
+  gap:3rem;align-items:center;
   position:relative;overflow:hidden;
 }
 #glandulas-salivales{background:linear-gradient(135deg,#fff0f5 60%,#ffd6e8)}
@@ -125,7 +127,13 @@ header h1 span{color:var(--gold)}
 #int-grueso  .label{color:var(--c8)} #int-grueso  h2::after{background:var(--c8)}
 
 /* IMAGEN — efecto GLOW */
-.organ-img-wrap{display:flex;flex-direction:column;align-items:center;gap:0.6rem}
+.organ-img-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.6rem;
+  min-width:300px; /* Evita que colapse a 0 de ancho en PC */
+}
 .organ-img{
   width:100%;max-width:280px;height:230px;object-fit:contain;
   border-radius:14px;background:#fff;padding:0.75rem;
@@ -147,7 +155,6 @@ body.nav-open main{margin-left:var(--nav-w)}
 /* MOBILE */
 @media(max-width:768px){
   .organ{grid-template-columns:1fr;gap:1.5rem;padding:2.5rem 1.25rem}
-  .organ-img-wrap{display:none}
+  .organ-img-wrap{display:flex !important;min-width:100%} /* Forzamos a que se muestre siempre */
   header{padding:4rem 1.25rem 3rem}
-  body.mobile .organ-img-wrap{display:flex}
 }
