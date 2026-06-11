@@ -1,0 +1,153 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#f5f0e8;--warm:#e8ddc8;--brown:#3d2b1f;--rust:#b84a2e;
+  --gold:#c8953a;--dark:#1a1208;--text:#2e1e12;--muted:#7a6552;
+  --nav-w:220px;
+  --c1:#e63946;--c2:#e76f51;--c3:#f4a261;--c4:#2a9d8f;
+  --c5:#457b9d;--c6:#d4a017;--c7:#6a4c93;--c8:#c0392b;
+  --c9:#27ae60;--c10:#2980b9;--c11:#8e44ad;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--text);font-family:'Source Serif 4',Georgia,serif;line-height:1.75;overflow-x:hidden}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:400;
+  background:linear-gradient(to right,var(--c1),var(--c2),var(--c3),var(--c4),var(--c5),var(--c6),var(--c7),var(--c8),var(--c9),var(--c10),var(--c11));
+  transform-origin:left;transform:scaleX(0);transition:transform 0.1s linear}
+
+/* HAMBURGER BTN */
+#menuBtn{
+  position:fixed;top:1rem;left:1rem;z-index:300;
+  background:var(--dark);border:1px solid rgba(200,149,58,0.35);
+  color:var(--gold);font-size:1.4rem;padding:0.35rem 0.65rem;
+  border-radius:8px;cursor:pointer;line-height:1;
+}
+#menuBtn:hover{background:#2e1205}
+
+/* OVERLAY */
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:190}
+#overlay.open{display:block}
+
+/* SIDEBAR */
+#sidebar{
+  position:fixed;top:0;left:0;width:var(--nav-w);height:100vh;
+  background:var(--dark);z-index:200;display:flex;flex-direction:column;
+  padding-bottom:1rem;border-right:1px solid rgba(200,149,58,0.18);
+  transform:translateX(-100%);transition:transform 0.3s ease;overflow-y:auto;
+}
+#sidebar.open{transform:translateX(0)}
+.nav-head{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid rgba(200,149,58,0.15);position:relative}
+.nav-head p{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.25rem}
+.nav-head h2{font-family:'Playfair Display',serif;font-size:0.95rem;color:var(--cream);line-height:1.3}
+#closeBtn{position:absolute;top:1rem;right:1rem;background:none;border:none;color:rgba(245,240,232,0.4);font-size:1.3rem;cursor:pointer;line-height:1}
+#closeBtn:hover{color:var(--gold)}
+#sidebar a{
+  display:block;padding:0.55rem 1.25rem;font-size:0.78rem;
+  color:rgba(245,240,232,0.5);text-decoration:none;
+  border-left:3px solid transparent;transition:all 0.2s;letter-spacing:0.04em;
+}
+#sidebar a:hover,#sidebar a.active{color:var(--cream);background:rgba(200,149,58,0.1)}
+#sidebar a:nth-of-type(1){border-left-color:var(--c1)}
+#sidebar a:nth-of-type(2){border-left-color:var(--c2)}
+#sidebar a:nth-of-type(3){border-left-color:var(--c3)}
+#sidebar a:nth-of-type(4){border-left-color:var(--c4)}
+#sidebar a:nth-of-type(5){border-left-color:var(--c5)}
+#sidebar a:nth-of-type(6){border-left-color:var(--c6)}
+#sidebar a:nth-of-type(7){border-left-color:var(--c7)}
+#sidebar a:nth-of-type(8){border-left-color:var(--c8)}
+#sidebar a:nth-of-type(9){border-left-color:var(--c9)}
+#sidebar a:nth-of-type(10){border-left-color:var(--c10)}
+#sidebar a:nth-of-type(11){border-left-color:var(--c11)}
+.nav-foot{margin-top:auto;padding:1rem 1.25rem;border-top:1px solid rgba(200,149,58,0.12);font-size:0.68rem;color:rgba(245,240,232,0.35);line-height:1.8}
+
+/* MAIN */
+main{transition:margin-left 0.3s ease}
+
+/* HEADER */
+header{
+  background:linear-gradient(160deg,#1a0a04,#3d1a0a 55%,#2e1205);
+  padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden;
+}
+header::before{content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c8953a' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")}
+.tag{font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;position:relative}
+header h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,7vw,5rem);font-weight:900;color:var(--cream);line-height:1.1;margin-bottom:0.5rem;position:relative}
+header h1 span{color:var(--gold)}
+.sub{font-size:1rem;color:rgba(245,240,232,0.5);font-style:italic;margin-bottom:1.5rem;position:relative}
+.members{display:inline-flex;gap:0.5rem;align-items:center;background:rgba(200,149,58,0.12);border:1px solid rgba(200,149,58,0.25);padding:0.45rem 1.25rem;border-radius:100px;font-size:0.82rem;color:var(--cream);position:relative}
+.members span{color:var(--gold)}
+
+/* ORGANS */
+.organ{
+  padding:4rem 2.5rem;border-bottom:1px solid var(--warm);
+  display:grid;grid-template-columns:1fr 300px;gap:3rem;align-items:center;
+  position:relative;overflow:hidden;
+}
+#glandulas-salivales{background:linear-gradient(135deg,#fff0f5 60%,#ffd6e8)}
+#boca       {background:linear-gradient(135deg,#fff5f5 60%,#ffe4e4)}
+#faringe    {background:linear-gradient(135deg,#fff8f4 60%,#ffe0d2)}
+#laringe    {background:linear-gradient(135deg,#fffbf2 60%,#feecd0)}
+#esofago    {background:linear-gradient(135deg,#f2fbf8 60%,#c8efe8)}
+#estomago   {background:linear-gradient(135deg,#f0f5fc 60%,#ccdff5)}
+#higado     {background:linear-gradient(135deg,#fefdf0 60%,#faf0b8)}
+#vesicula   {background:linear-gradient(135deg,#f2fdf4 60%,#c8efcc)}
+#pancreas   {background:linear-gradient(135deg,#f0f8fe 60%,#c8e4f8)}
+#int-delgado{background:linear-gradient(135deg,#fdf2fe 60%,#f0c8f8)}
+#int-grueso {background:linear-gradient(135deg,#f6f2fc 60%,#e0d0f5)}
+
+.organ-num{
+  position:absolute;top:1.5rem;right:2rem;
+  font-family:'Playfair Display',serif;font-size:clamp(5rem,10vw,9rem);
+  font-weight:900;color:rgba(61,43,31,0.04);line-height:1;user-select:none;pointer-events:none;
+}
+.label{font-size:0.63rem;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:0.4rem}
+.organ-body h2{
+  font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);
+  font-weight:700;color:var(--brown);margin-bottom:0.75rem;line-height:1.2;
+  padding-bottom:0.6rem;position:relative;
+}
+.organ-body h2::after{content:'';position:absolute;bottom:0;left:0;width:45px;height:4px;border-radius:2px}
+.organ-body p{font-size:0.97rem;color:var(--text)}
+.organ-body strong{color:var(--rust)}
+.organ-body em{color:var(--muted)}
+
+/* Colores por órgano */
+#glandulas-salivales .label{color:var(--c1)} #glandulas-salivales h2::after{background:var(--c1)}
+#boca        .label{color:var(--c2)} #boca        h2::after{background:var(--c2)}
+#faringe     .label{color:var(--c3)} #faringe     h2::after{background:var(--c3)}
+#laringe     .label{color:var(--c4)} #laringe     h2::after{background:var(--c4)}
+#esofago     .label{color:var(--c5)} #esofago     h2::after{background:var(--c5)}
+#estomago    .label{color:var(--c6)} #estomago    h2::after{background:var(--c6)}
+#higado      .label{color:var(--c7)} #higado      h2::after{background:var(--c7)}
+#vesicula    .label{color:var(--c9)} #vesicula    h2::after{background:var(--c9)}
+#pancreas    .label{color:var(--c10)}#pancreas    h2::after{background:var(--c10)}
+#int-delgado .label{color:var(--c11)}#int-delgado h2::after{background:var(--c11)}
+#int-grueso  .label{color:var(--c8)} #int-grueso  h2::after{background:var(--c8)}
+
+/* IMAGEN — efecto GLOW */
+.organ-img-wrap{display:flex;flex-direction:column;align-items:center;gap:0.6rem}
+.organ-img{
+  width:100%;max-width:280px;height:230px;object-fit:contain;
+  border-radius:14px;background:#fff;padding:0.75rem;
+  box-shadow:0 0 15px rgba(200,149,58,0.4);
+  transition:box-shadow 0.35s ease,transform 0.35s ease;
+}
+.organ-img:hover{box-shadow:0 0 30px rgba(200,149,58,0.75);transform:translateY(-4px) scale(1.02)}
+.img-cap{font-size:0.7rem;color:var(--muted);font-style:italic;text-align:center}
+
+/* FOOTER */
+footer{
+  background:var(--dark);text-align:center;padding:3.5rem 2rem;
+  font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--gold);
+}
+
+/* PC con nav abierta */
+body.nav-open main{margin-left:var(--nav-w)}
+
+/* MOBILE */
+@media(max-width:768px){
+  .organ{grid-template-columns:1fr;gap:1.5rem;padding:2.5rem 1.25rem}
+  .organ-img-wrap{display:none}
+  header{padding:4rem 1.25rem 3rem}
+  body.mobile .organ-img-wrap{display:flex}
+}
